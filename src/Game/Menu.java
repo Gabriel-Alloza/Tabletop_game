@@ -20,12 +20,12 @@ public class Menu {
         if (type.equalsIgnoreCase("Warrior")) {
             Warrior PC = new Warrior(name);
             DatabaseManager db = new DatabaseManager();
-            db.createHero(PC);
+            //db.createHero(PC);
             return PC;
         } else if (type.equalsIgnoreCase("Magician")) {
             Magician PC = new Magician(name);
             DatabaseManager db = new DatabaseManager();
-            db.createHero(PC);
+            //db.createHero(PC);
             return PC;
         } else {
             System.out.println("Invalid class, please restart the game.");

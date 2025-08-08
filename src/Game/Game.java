@@ -67,8 +67,15 @@ public class Game {
                 }
 
                 if (position >= board.getSize() && !isDead) {
-                    System.out.println("Congratulation!! you won the game!!!");
-                    hasWon = true;
+                    if(player.killCount >= 5){
+                        System.out.println("You completed you journey but you killed way too many merchants so the king decided to hang you. Game over!");
+                        isDead = true;
+                    }
+                    else{
+                        System.out.println("Congratulation!! you won the game!!!");
+                        hasWon = true;
+                    }
+
                 }
             } else {
                 System.out.println("You failed to roll the dice! please try again");
@@ -94,7 +101,7 @@ public class Game {
                 if(input .equals("Y")){
                     player.money += 3;
                     player.killCount += 1;
-                System.out.println("Your kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
+                System.out.println("Your merchant kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
                     setBack = fight((Character) square);
                     System.out.println("You found 3 gold coins in his shop");
                 }
@@ -110,6 +117,13 @@ public class Game {
             }
             else{
                 setBack = fight((Character) square);
+                if(square instanceof Merchant){
+                    player.killCount += 1;
+                    System.out.println("ypur merchant kill count is now " + player.killCount);
+                }
+
+
+
             }
         } else if (square instanceof Potion) {
             ((Potion) square).equip(player);

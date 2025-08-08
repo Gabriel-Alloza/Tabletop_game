@@ -31,6 +31,7 @@ public class Merchant extends Character{
                                                                 ((Magician) player).hasFireball = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Magician) player).money + " gold.");
+                                                                System.out.println("You no longer have your fireball, your attack is now" + player.attack);
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -53,6 +54,8 @@ public class Merchant extends Character{
                                                                 ((Magician) player).hasLightning = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Magician) player).money + " gold.");
+                                                                System.out.println("You no longer have your lightning, your attack is now" + player.attack);
+
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -75,6 +78,8 @@ public class Merchant extends Character{
                                                                 ((Magician) player).hasInv = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Magician) player).money + " gold.");
+                                                                System.out.println("You no longer have your invisibility, your attack is now" + player.attack + " and you no longer have a +3 bonus against evil spirits");
+
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -99,6 +104,8 @@ public class Merchant extends Character{
                                                                 ((Warrior) player).hasClub = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Warrior) player).money + " gold.");
+                                                                System.out.println("You no longer have your club, your attack is now" + player.attack);
+
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -111,7 +118,7 @@ public class Merchant extends Character{
                                                 System.out.println("You don't have a Club to sell.");
                                         }
 
-// Vente Bow
+                                        // Vente Bow
                                         if(((Warrior) player).hasBow){
                                                 while (!(response2.equals("Y") || response2.equals("N"))){
                                                         System.out.println("I can give you 5 gold for this bow, do you want to sell? (Y/N)");
@@ -121,6 +128,8 @@ public class Merchant extends Character{
                                                                 ((Warrior) player).hasBow = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Warrior) player).money + " gold.");
+                                                                System.out.println("You no longer have your bow, your attack is now" + player.attack + " and you no longer have a +2 bonus against dragons");
+
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -143,6 +152,8 @@ public class Merchant extends Character{
                                                                 ((Warrior) player).hasSword = false;
                                                                 System.out.println("It was a pleasure doing business with you!");
                                                                 System.out.println("You now have " + ((Warrior) player).money + " gold.");
+                                                                System.out.println("You no longer have your sword, your attack is now" + player.attack);
+
                                                         }
                                                         else if(response2.equals("N")){
                                                                 System.out.println("Ok, goodbye then.");
@@ -156,6 +167,8 @@ public class Merchant extends Character{
                                         }
 
                                 }
+                                System.out.println("do you want to buy something now? (any key) or pass? (P)");
+                                response = scanner.nextLine();
                         } else if (response.equals("B")) {
                                         String response2 = "";
                                         if (player instanceof Magician) {
@@ -167,6 +180,12 @@ public class Merchant extends Character{
                                                                 if (((Magician) player).money >= 7) {
                                                                         ((Magician) player).money -= 7;
                                                                         ((Magician) player).hasFireball = true;
+                                                                        if(((Magician) player).hasLightning){
+                                                                                ((Magician) player).hasLightning = false;
+                                                                        }
+                                                                        if(((Magician) player).hasInv){
+                                                                                ((Magician) player).hasInv = false;
+                                                                        }
                                                                         System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Magician) player).money + " gold.");
                                                                 } else {
@@ -284,15 +303,14 @@ public class Merchant extends Character{
                                                         }
                                                 }
                                         }
-
-
-
-                        } else if(response .equals("P")){
-                                System.out.println("ok goodbye");
-                        }
-                        else{
-                                System.out.println("huh?");
+                                        System.out.println("Maybe you want to sell now? (any key) or do you want to pass? (P)");
+                                        response = scanner.nextLine();
+                                } else if(response .equals("P")){
+                                        System.out.println("ok goodbye");
+                                }
+                                else{
+                                        System.out.println("I'll ask again");
+                                }
                         }
                 }
         }
-}

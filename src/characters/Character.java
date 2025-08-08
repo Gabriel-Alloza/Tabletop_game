@@ -10,7 +10,6 @@ public class Character {
         public String charName;
         public int attack;
         public int life;
-        public boolean isKiller = false;
         public int money = 3;
         public int killCount = 0;
 
