@@ -10,7 +10,11 @@ public class Character {
         public String charName;
         public int attack;
         public int life;
-        public Character(String charName, int attack, int life){
+        public boolean isKiller = false;
+        public int money = 3;
+        public int killCount = 0;
+
+    public Character(String charName, int attack, int life){
             this.charName = charName;
             this.attack = attack;
             this.life = life;

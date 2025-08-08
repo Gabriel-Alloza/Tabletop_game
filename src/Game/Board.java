@@ -24,19 +24,28 @@ public class Board {
         int bonusBornInf = 42;
         int bonusBornSupp = 42;
 
+        int merchantBornInf = 42;
+        int merchantBornSupp = 42;
+
         if(difficulty .equals("UL")){
             enemyBornInf = 7;
             enemyBornSupp = 7;
 
             bonusBornInf = 1;
             bonusBornSupp = 6;
+
+            merchantBornInf = 7;
+            merchantBornSupp = 7;
         }
         else if(difficulty .equals("SE")){
             enemyBornInf = 6;
             enemyBornSupp = 6;
 
             bonusBornInf = 1;
-            bonusBornSupp = 5;
+            bonusBornSupp = 4;
+
+            merchantBornInf = 5;
+            merchantBornSupp = 5;
         }
         else if(difficulty .equals("E")){
             enemyBornInf = 6;
@@ -44,6 +53,9 @@ public class Board {
 
             bonusBornInf = 1;
             bonusBornSupp = 3;
+
+            merchantBornInf = 4;
+            merchantBornSupp = 5;
         }
         else if(difficulty .equals("S")){
             enemyBornInf = 6;
@@ -51,6 +63,9 @@ public class Board {
 
             bonusBornInf = 5;
             bonusBornSupp = 5;
+
+            merchantBornInf = 3;
+            merchantBornSupp = 4;
         }
         else if(difficulty .equals("H")){
             enemyBornInf = 4;
@@ -58,13 +73,19 @@ public class Board {
 
             bonusBornInf = 3;
             bonusBornSupp = 3;
+
+            merchantBornInf = 1;
+            merchantBornSupp = 2;
         }
         else if(difficulty .equals("SH")){
-            enemyBornInf = 2;
+            enemyBornInf = 3;
             enemyBornSupp = 6;
 
             bonusBornInf = 1;
             bonusBornSupp = 1;
+
+            merchantBornInf = 2;
+            merchantBornSupp = 2;
         }
         else if(difficulty .equals("UW")){
             enemyBornInf = 1;
@@ -72,6 +93,9 @@ public class Board {
 
             bonusBornInf = 7;
             bonusBornSupp = 7;
+
+            merchantBornInf = 7;
+            merchantBornSupp = 7;
         }
         else{
             System.out.println("y'a un problème de difficulté chef");
@@ -121,7 +145,11 @@ public class Board {
                 else{
                     squares.add(new Square().getcontent("Thunder potion"));
                 }
-            } else {
+            } else if(caseContent >= merchantBornInf && caseContent <= merchantBornSupp)
+            {
+                squares.add(new Square().getcontent("Merchant"));
+            }
+            else {
                 squares.add(new Square().getcontent("Nothing"));
             }
         }

@@ -10,6 +10,7 @@ public class Magician extends Character {
     public boolean hasFireball = false;
     public boolean hasInv = false;
 
+
     public Magician(String charName){
         super(charName, generateAttack(), generateLife());
 

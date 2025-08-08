@@ -15,6 +15,7 @@ import Items.Invisibility;
 import Items.Fireball;
 import java.util.Scanner;
 import java.util.Random;
+import characters.Merchant;
 
 public class Game {
     /**
@@ -85,6 +86,27 @@ public class Game {
             }
             else if(player instanceof Warrior && square instanceof BadSpirit){
                 System.out.println("You see a bad spirit, but he doesn't attack you");
+            }
+            else if(square instanceof Merchant && player.killCount < dice(3)){
+                System.out.println("You encounter a merchant! He can sell you stuff!:");
+                System.out.println("Do you want to kill and rob the merchant? (Y/N)");
+                String input = scanner.nextLine();
+                if(input .equals("Y")){
+                    player.money += 3;
+                    player.killCount += 1;
+                System.out.println("Your kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
+                    setBack = fight((Character) square);
+                    System.out.println("You found 3 gold coins in his shop");
+                }
+                else{
+                    if(!(input .equals("N"))){
+                        System.out.println("huuuuh I'll take that as a no I guess");
+                    }
+                    ((Merchant)square).doingBuisness(player);
+
+                }
+
+
             }
             else{
                 setBack = fight((Character) square);

@@ -1,29 +1,6 @@
 package Game;
-import characters.Wizard;
-import characters.Gobelin;
-import characters.Dragon;
-import characters.BadSpirit;
-import characters.Orc;
-import Items.Bow;
-import Items.StandardPotion;
-import Items.Club;
-import Items.Sword;
-import Items.Lightning;
-import Items.Fireball;
-import Items.Invisibility;
-import Items.ThunderPotion;
-import Items.BigPotion;
-
-
-
-
-
-
-
-
-
-
-
+import characters.*;
+import Items.*;
 
 
 public class Square {
@@ -79,6 +56,9 @@ public class Square {
         }
         else if(squareContent .equals("Thunder potion")){
             return new ThunderPotion();
+        }
+        else if(squareContent .equals("Merchant")){
+            return new Merchant();
         }
         else if(squareContent .equals("Nothing")){
             return null;
