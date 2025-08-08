@@ -1,6 +1,7 @@
 package Game;
 import characters.Character;
 import java.util.Scanner;
+import  Database.DatabaseManager;
 
 public class Main {
 
@@ -13,9 +14,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to Dungeons and Dragons: Virtual Board Game Edition!!");
-        //DatabaseManager db = new DatabaseManager();
-        //db.getHeroes();
-      //  db.close();
+        DatabaseManager db = new DatabaseManager();
+        db.getHeroes();
+         db.close();
 
 
 
