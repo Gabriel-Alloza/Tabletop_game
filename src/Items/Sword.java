@@ -2,6 +2,11 @@ package Items;
 import characters.Warrior;
 import java.util.Scanner;
 public class Sword {
+    public int price;
+
+    public Sword(){
+        this.price = 5;
+    }
     /**
      * Cette classe permet de mettre des épées sur le plateau, et gère l'interraction avec le joueur.'.
      */

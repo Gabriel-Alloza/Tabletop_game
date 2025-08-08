@@ -3,6 +3,10 @@ import characters.Magician;
 import java.util.Scanner;
 
 public class Invisibility {
+    public int price;
+    public Invisibility(){
+        this.price = 6;
+    }
     /**
      * Cette classe permet d'ajouter de l'invisibilité sur le plateau, et gère l'interraction avec le joueur'.
      */

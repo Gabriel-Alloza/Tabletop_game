@@ -4,6 +4,13 @@ import java.util.Scanner;
 import characters.Warrior;
 
 public class Bow {
+
+    public int price;
+
+    public Bow(){
+        this.price = 5;
+    }
+
     /**
      * Cette classe permet de mettre des arcs sur le plateau, et gère l'interraction de l'arc avec le joueur.
      */

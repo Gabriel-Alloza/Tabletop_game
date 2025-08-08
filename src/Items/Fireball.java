@@ -4,6 +4,10 @@ import characters.Magician;
 import java.util.Scanner;
 
 public class Fireball {
+    public int price;
+    public Fireball(){
+        this.price = 7;
+    }
     /**
      * Cette classe permet d'ajouter des boules de feu sur le plateau, et gère l'interraction avec le joueur'.
      */

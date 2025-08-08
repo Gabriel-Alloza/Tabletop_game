@@ -1,6 +1,11 @@
 package Items;
 import characters.Magician;
 public class Lightning {
+    public int price;
+
+    public Lightning(){
+        this.price = 2;
+    }
     /**
      * Cette classe permet d'ajouter des éclairs sur le plateau, et gère l'interraction avec le joueur'.
      */

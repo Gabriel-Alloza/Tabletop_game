@@ -18,7 +18,7 @@ public class DatabaseManager {
     public DatabaseManager() {
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connexion réussie à la base de données.");
+            System.out.println("Successfull database connection.");
         } catch (SQLException e) {
             System.err.println("Échec de la connexion : " + e.getMessage());
         }
@@ -90,7 +90,7 @@ public class DatabaseManager {
         try {
             if (connection != null && !connection.isClosed()) {
                 connection.close();
-                System.out.println("Connexion fermée.");
+                System.out.println("Closing of connection.");
             }
         } catch (SQLException e) {
             System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage());
