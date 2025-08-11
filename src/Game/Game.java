@@ -119,7 +119,7 @@ public class Game {
                 setBack = fight((Character) square);
                 if(square instanceof Merchant){
                     player.killCount += 1;
-                    System.out.println("ypur merchant kill count is now " + player.killCount);
+                    System.out.println("your merchant kill count is now " + player.killCount);
                 }
 
 
@@ -195,8 +195,11 @@ public class Game {
 
             if (enemy.life <= 0) {
                 System.out.println("You win!!");
-                player.attack += 1;
-                System.out.println("You leveled up! you now have " + player.attack + " attack!!");
+                if(!(enemy instanceof Merchant)){
+                    player.attack += 1;
+                    System.out.println("You leveled up! you now have " + player.attack + " attack!!");
+                }
+
             } else {
                 player.life -= enemy.attack;
                 System.out.println("Ouch! he harmed you!");

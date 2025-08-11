@@ -1,4 +1,6 @@
 package characters;
+import Items.*;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Random;
@@ -179,12 +181,15 @@ public class Merchant extends Character{
                                                         if (response2.equals("Y")) {
                                                                 if (((Magician) player).money >= 7) {
                                                                         ((Magician) player).money -= 7;
-                                                                        ((Magician) player).hasFireball = true;
+                                                                        //Fireball soldItem = new Fireball();
+                                                                        Fireball.equip(((Magician) player));
                                                                         if(((Magician) player).hasLightning){
                                                                                 ((Magician) player).hasLightning = false;
+                                                                                System.out.println("You throw away your lightning");
                                                                         }
                                                                         if(((Magician) player).hasInv){
                                                                                 ((Magician) player).hasInv = false;
+                                                                                System.out.println("You throw away your invisibility");
                                                                         }
                                                                         System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Magician) player).money + " gold.");
@@ -204,13 +209,20 @@ public class Merchant extends Character{
                                                         System.out.println("I can sell you a Lightning for 2 gold. Do you want to buy? (Y/N)");
                                                         response2 = scanner.nextLine();
                                                         if (response2.equals("Y")) {
-                                                                if (((Magician) player).money >= 2) {
+                                                                if (((Magician) player).money >= 2 && !(((Magician) player).hasInv || ((Magician) player).hasFireball)) {
                                                                         ((Magician) player).money -= 2;
-                                                                        ((Magician) player).hasLightning = true;
+                                                                        //Lightning soldItem = new Lightning();
+                                                                        Lightning.equip(((Magician) player));
                                                                         System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Magician) player).money + " gold.");
                                                                 } else {
-                                                                        System.out.println("You don't have enough gold to buy that!");
+                                                                        if(((Magician) player).hasFireball || ((Magician) player).hasInv){
+                                                                                System.out.println("Why would you buy that, you alredy have an objectively supperior weapon.");
+                                                                        }
+                                                                        else{
+                                                                                System.out.println("You don't have enough gold to buy that!");
+
+                                                                        }
                                                                 }
                                                         } else if (response2.equals("N")) {
                                                                 System.out.println("Maybe next time.");
@@ -227,8 +239,8 @@ public class Merchant extends Character{
                                                         if (response2.equals("Y")) {
                                                                 if (((Magician) player).money >= 6) {
                                                                         ((Magician) player).money -= 6;
-                                                                        ((Magician) player).hasInv = true;
-                                                                        System.out.println("Thank you for your purchase!");
+                                                                        Invisibility.equip(((Magician) player));
+                                                                System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Magician) player).money + " gold.");
                                                                 } else {
                                                                         System.out.println("You don't have enough gold to buy that!");
@@ -245,10 +257,10 @@ public class Merchant extends Character{
                                                 while (!(response2.equals("Y") || response2.equals("N"))) {
                                                         System.out.println("I can sell you a Club for 3 gold. Do you want to buy? (Y/N)");
                                                         response2 = scanner.nextLine();
-                                                        if (response2.equals("Y")) {
+                                                        if (response2.equals("Y") && !(((Warrior) player).hasBow || ((Warrior) player).hasSword)) {
                                                                 if (((Warrior) player).money >= 3) {
                                                                         ((Warrior) player).money -= 3;
-                                                                        ((Warrior) player).hasClub = true;
+                                                                        Club.equip(((Warrior) player));
                                                                         System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Warrior) player).money + " gold.");
                                                                 } else {
@@ -256,6 +268,10 @@ public class Merchant extends Character{
                                                                 }
                                                         } else if (response2.equals("N")) {
                                                                 System.out.println("Maybe next time.");
+                                                        }
+                                                        else if((((Warrior) player).hasBow || ((Warrior) player).hasSword)){
+                                                                System.out.println("Why would you buy that, you alredy have a superior weapon");
+
                                                         } else {
                                                                 System.out.println("What?");
                                                         }
@@ -269,7 +285,7 @@ public class Merchant extends Character{
                                                         if (response2.equals("Y")) {
                                                                 if (((Warrior) player).money >= 5) {
                                                                         ((Warrior) player).money -= 5;
-                                                                        ((Warrior) player).hasBow = true;
+                                                                        Bow.equip(((Warrior) player));
                                                                         System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Warrior) player).money + " gold.");
                                                                 } else {
@@ -290,8 +306,7 @@ public class Merchant extends Character{
                                                         if (response2.equals("Y")) {
                                                                 if (((Warrior) player).money >= 5) {
                                                                         ((Warrior) player).money -= 5;
-                                                                        ((Warrior) player).hasSword = true;
-                                                                        System.out.println("Thank you for your purchase!");
+                                                                        Sword.equip(((Warrior) player));                                                                        System.out.println("Thank you for your purchase!");
                                                                         System.out.println("You now have " + ((Warrior) player).money + " gold.");
                                                                 } else {
                                                                         System.out.println("You don't have enough gold to buy that!");
@@ -303,8 +318,11 @@ public class Merchant extends Character{
                                                         }
                                                 }
                                         }
-                                        System.out.println("Maybe you want to sell now? (any key) or do you want to pass? (P)");
+                                        System.out.println("Maybe you want to do something else now? (any key) or do you want to pass? (P)");
                                         response = scanner.nextLine();
+                                        if(!(response .equals("P"))){
+                                                response = "";
+                                        }
                                 } else if(response .equals("P")){
                                         System.out.println("ok goodbye");
                                 }
