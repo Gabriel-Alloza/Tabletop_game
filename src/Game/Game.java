@@ -107,7 +107,7 @@ public class Game {
                 }
                 else{
                     if(!(input .equals("N"))){
-                        System.out.println("huuuuh I'll take that as a no I guess");
+                        System.out.println("I'll take that as a no");
                     }
                     ((Merchant)square).doingBuisness(player);
 
@@ -210,15 +210,15 @@ public class Game {
                     System.out.println("Luckily, you survived!");
                     System.out.println("You still have " + player.life + " life points!");
                     System.out.println("Do you want to fight? (F), or escape? (E)");
-                    String choice = scanner.nextLine();
-                    if(choice .equals("E")){
-                        hasEscaped = true;
-                    }
-                    else if(choice .equals("F")){
-
-                    }
-                    else{
-                        System.out.println("You were'nt clear enough, so now you're fightning lol");
+                    String choice = "";
+                    while(!(choice .equals("F") || choice .equals("E"))){
+                        choice = scanner.nextLine();
+                        if(choice .equals("E")){
+                            hasEscaped = true;
+                        }
+                        else if(!(choice .equals("F"))){
+                            System.out.println("Invalid entry please try again");
+                        }
                     }
                 }
             }
