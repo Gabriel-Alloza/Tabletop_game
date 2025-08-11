@@ -101,9 +101,11 @@ public class Game {
                 if(input .equals("Y")){
                     player.money += 3;
                     player.killCount += 1;
-                System.out.println("Your merchant kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
                     setBack = fight((Character) square);
+                    if(!isDead){
                     System.out.println("You found 3 gold coins in his shop");
+                        System.out.println("Your merchant kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
+                    }
                 }
                 else{
                     if(!(input .equals("N"))){
