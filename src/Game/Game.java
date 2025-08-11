@@ -121,6 +121,8 @@ public class Game {
                 setBack = fight((Character) square);
                 if(square instanceof Merchant){
                     player.killCount += 1;
+                    System.out.println("You found 3 gold coins in his shop");
+                    player.money += 3;
                     System.out.println("your merchant kill count is now " + player.killCount);
                 }
 
