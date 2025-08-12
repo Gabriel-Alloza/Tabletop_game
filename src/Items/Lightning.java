@@ -12,8 +12,8 @@ public class Lightning {
     public static void equip(Magician player){
         if(!player.hasLightning && !(player.hasFireball || player.hasInv)){
             System.out.println("You equip yourself with a lightning!");
-            player.attack += 2;
-            System.out.println("Your attack is now " + player.attack + "!");
+            player.setAttack(player.getAttack() + 2);
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             player.hasLightning = true;
         }
         else{

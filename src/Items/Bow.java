@@ -20,9 +20,9 @@ public class Bow {
 
         if(!player.hasBow){
             System.out.println("You equip yourself with a bow!");
-            player.attack += 4;
+            player.setAttack(player.getAttack() + 4);
             player.hasBow = true;
-            System.out.println("Your attack is now " + player.attack + "!");
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             System.out.println("And you have a +2 bonus against dragons!");
         }
         else{
@@ -31,18 +31,18 @@ public class Bow {
 
         if(player.hasSword){
             String choice = "";
-            while(!(choice .equals("Y") || choice .equals("N"))){
+            while(!(choice .equalsIgnoreCase("Y") || choice .equalsIgnoreCase("N"))){
                 System.out.println("Do you want to throw away your sword to pick up this bow? (Y/N)");
                 choice = scanner.nextLine();
-                if(choice .equals("Y")){
-                    player.attack -= 5;
+                if(choice .equalsIgnoreCase("Y")){
+                    player.setAttack(player.getAttack() -  5);
                     player.hasSword = false;
-                    System.out.println("Your attack is now " + player.attack + "!");
+                    System.out.println("Your attack is now " + player.getAttack() + "!");
                     System.out.println("And you have a +2 bonus against dragons!");
                 }
-                else if(choice .equals("N")){
-                    player.attack -= 4;
-                    System.out.println("Your attack is still " + player.attack + "!");
+                else if(choice .equalsIgnoreCase("N")){
+                    player.setAttack(player.getAttack() - 4);
+                    System.out.println("Your attack is still " + player.getAttack() + "!");
                     player.hasBow = false;
                 }
                 else{
@@ -53,9 +53,9 @@ public class Bow {
 
         if(player.hasClub){
             System.out.println("You dont need your club anymore");
-            player.attack -= 3;
+            player.setAttack(player.getAttack() - 3);
             player.hasClub = false;
-            System.out.println("Your attack is now " + player.attack + "!");
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             System.out.println("And you have a +2 bonus against dragons!");
         }
     }

@@ -27,7 +27,7 @@ public class Board {
         int merchantBornInf = 42;
         int merchantBornSupp = 42;
 
-        if(difficulty .equals("UL")){
+        if(difficulty .equalsIgnoreCase("UL")){
             enemyBornInf = 7;
             enemyBornSupp = 7;
 
@@ -37,7 +37,7 @@ public class Board {
             merchantBornInf = 7;
             merchantBornSupp = 7;
         }
-        else if(difficulty .equals("SE")){
+        else if(difficulty .equalsIgnoreCase("SE")){
             enemyBornInf = 6;
             enemyBornSupp = 6;
 
@@ -47,7 +47,7 @@ public class Board {
             merchantBornInf = 5;
             merchantBornSupp = 5;
         }
-        else if(difficulty .equals("E")){
+        else if(difficulty .equalsIgnoreCase("E")){
             enemyBornInf = 6;
             enemyBornSupp = 6;
 
@@ -57,7 +57,7 @@ public class Board {
             merchantBornInf = 4;
             merchantBornSupp = 5;
         }
-        else if(difficulty .equals("S")){
+        else if(difficulty .equalsIgnoreCase("S")){
             enemyBornInf = 6;
             enemyBornSupp = 6;
 
@@ -67,7 +67,7 @@ public class Board {
             merchantBornInf = 3;
             merchantBornSupp = 4;
         }
-        else if(difficulty .equals("H")){
+        else if(difficulty .equalsIgnoreCase("H")){
             enemyBornInf = 4;
             enemyBornSupp = 6;
 
@@ -77,7 +77,7 @@ public class Board {
             merchantBornInf = 1;
             merchantBornSupp = 2;
         }
-        else if(difficulty .equals("SH")){
+        else if(difficulty .equalsIgnoreCase("SH")){
             enemyBornInf = 3;
             enemyBornSupp = 6;
 
@@ -87,7 +87,7 @@ public class Board {
             merchantBornInf = 2;
             merchantBornSupp = 2;
         }
-        else if(difficulty .equals("UW")){
+        else if(difficulty .equalsIgnoreCase("UW")){
             enemyBornInf = 1;
             enemyBornSupp = 6;
 

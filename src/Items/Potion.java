@@ -12,12 +12,12 @@ public class Potion {
     }
     public void equip(Character player){
         if(doubleStrength){
-            player.doubleForce = true;
+            player.setDoubleForce(true);
             System.out.println("You found a potion and it doubled your strength for the next fight!! (if your strength isn't alredy doubled)");
 
         }
         else{
-            player.life += healingPower;
+            player.setLife(player.getLife() + healingPower);
             System.out.println("You found a potion and gained " + healingPower + " life!!");
         }
 

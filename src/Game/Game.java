@@ -36,10 +36,10 @@ public class Game {
 
     public void start() {
         if(board.difficulty .equals("UW")){
-            player.attack = 1;
-            player.life = 1;
+            player.setAttack(1);
+            player.setLife(1);
         };
-        System.out.println(player.charName + ", you have " + player.attack + " strength and " + player.life + " life.");
+        System.out.println(player.getCharName() + ", you have " + player.getAttack() + " strength and " + player.getLife() + " life.");
         System.out.println("Let the game begin!!");
 
         int position = 0;
@@ -67,7 +67,7 @@ public class Game {
                 }
 
                 if (position >= board.getSize() && !isDead) {
-                    if(player.killCount >= 5){
+                    if(player.getKillCount() >= 5){
                         System.out.println("You completed you journey but you killed way too many merchants so the king decided to hang you. Game over!");
                         isDead = true;
                     }
@@ -81,6 +81,8 @@ public class Game {
                 System.out.println("You failed to roll the dice! please try again");
             }
         }
+        scanner.close();
+
     }
 
     private boolean processSquare(Object square) {
@@ -94,21 +96,21 @@ public class Game {
             else if(player instanceof Warrior && square instanceof BadSpirit){
                 System.out.println("You see a bad spirit, but he doesn't attack you");
             }
-            else if(square instanceof Merchant && player.killCount < dice(3)){
+            else if(square instanceof Merchant && player.getKillCount() < dice(3)){
                 System.out.println("You encounter a merchant! He can sell you stuff!:");
                 System.out.println("Do you want to kill and rob the merchant? (Y/N)");
                 String input = scanner.nextLine();
-                if(input .equals("Y")){
-                    player.money += 3;
-                    player.killCount += 1;
+                if(input.equalsIgnoreCase("Y")){
                     setBack = fight((Character) square);
-                    if(!isDead){
-                    System.out.println("You found 3 gold coins in his shop");
-                        System.out.println("Your merchant kill count is now " + player.killCount + " the higher it gets, the higher are the chances of a merchant attacking you first.");
+                    if(player.getLife() >= 0 && !setBack){
+                        player.setMoney(player.getMoney() + 3);
+                        player.setKillCount(((Character) player).getKillCount() + 1);
+                        System.out.println("You found 3 gold coins in his shop");
+                        System.out.println("Your merchant kill count is now " + player.getKillCount() + " the higher it gets, the higher are the chances of a merchant attacking you first.");
                     }
                 }
                 else{
-                    if(!(input .equals("N"))){
+                    if(!(input.equalsIgnoreCase("N"))){
                         System.out.println("I'll take that as a no");
                     }
                     ((Merchant)square).doingBuisness(player);
@@ -120,10 +122,10 @@ public class Game {
             else{
                 setBack = fight((Character) square);
                 if(square instanceof Merchant){
-                    player.killCount += 1;
+                    player.setKillCount(((Character) player).getKillCount() + 1);
                     System.out.println("You found 3 gold coins in his shop");
-                    player.money += 3;
-                    System.out.println("your merchant kill count is now " + player.killCount);
+                    player.setMoney(((Character) player).getMoney() + 3);
+                    System.out.println("your merchant kill count is now " + player.getKillCount());
                 }
 
 
@@ -139,11 +141,11 @@ public class Game {
 
     private boolean fight(Character enemy) {
         boolean hasEscaped = false;
-        while(!isDead && enemy.life > 0 && !hasEscaped){
+        while(!isDead && enemy.getLife() > 0 && !hasEscaped){
             System.out.println("You fight a " + enemy.getClass().getSimpleName().toLowerCase() + "!");
             int randomFactor = dice(20);
-            if(player.doubleForce){
-                player.attack = player.attack*2;
+            if(player.getDoubleForce()){
+                player.setAttack(player.getAttack()*2);
             }
 
 
@@ -154,11 +156,11 @@ public class Game {
                 }
                 else if(randomFactor == 20){
                     System.out.println("Critical success! you inflict him your strentgh + 2 in damage!");
-                    enemy.life -= player.attack + 4;
+                    enemy.setLife(enemy.getLife() - player.getAttack() + 4);
                 }
                 else{
                     System.out.println("You neither did a critical miss, nor a critical success. Damage dealt as normal.");
-                    enemy.life -= player.attack + 2;
+                    enemy.setLife(enemy.getLife() - player.getAttack() + 2);
                 }
             }
             else if(player instanceof Magician && ((Magician)player).hasInv &&enemy instanceof BadSpirit){
@@ -167,11 +169,11 @@ public class Game {
                 }
                 else if(randomFactor == 20){
                     System.out.println("Critical success! you inflict him your strentgh + 2 in damage!");
-                    enemy.life -= player.attack + 5;
+                    enemy.setLife( - player.getAttack() + 5);
                 }
                 else{
                     System.out.println("You neither did a critical miss, nor a critical success. Damage dealt as normal.");
-                    enemy.life -= player.attack + 3;
+                    enemy.setLife(enemy.getLife() - player.getAttack() + 3);
 
                 }
             }
@@ -181,46 +183,46 @@ public class Game {
                 }
                 else if(randomFactor == 20){
                     System.out.println("Critical success! you inflict him your strentgh + 2 in damage!");
-                    enemy.life -= player.attack + 2;
+                    enemy.setLife(enemy.getLife() - player.getAttack() + 2);
 
                 }
                 else{
                     System.out.println("You neither did a critical miss, nor a critical success. Damage dealt as normal.");
-                    enemy.life -= player.attack;
+                    enemy.setLife(enemy.getLife() - player.getAttack());
                 }
             }
 
-            if(player.doubleForce){
-                player.attack = player.attack/2;
-                player.doubleForce = false;
+            if(player.getDoubleForce()){
+                player.setAttack(player.getAttack()/2);
+                player.setDoubleForce(false);
             }
 
 
 
-            if (enemy.life <= 0) {
+            if (enemy.getLife() <= 0) {
                 System.out.println("You win!!");
                 if(!(enemy instanceof Merchant)){
-                    player.attack += 1;
-                    System.out.println("You leveled up! you now have " + player.attack + " attack!!");
+                    player.setAttack(player.getAttack() + 1);
+                    System.out.println("You leveled up! you now have " + player.getAttack() + " attack!!");
                 }
 
             } else {
-                player.life -= enemy.attack;
+                player.setLife(player.getLife() - enemy.getAttack());
                 System.out.println("Ouch! he harmed you!");
-                if (player.life <= 0) {
+                if (player.getLife() <= 0) {
                     System.out.println("You're dead, game over.");
                     isDead = true;
                 } else {
                     System.out.println("Luckily, you survived!");
-                    System.out.println("You still have " + player.life + " life points!");
+                    System.out.println("You still have " + player.getLife() + " life points!");
                     System.out.println("Do you want to fight? (F), or escape? (E)");
                     String choice = "";
-                    while(!(choice .equals("F") || choice .equals("E"))){
+                    while(!(choice.equalsIgnoreCase("F") || choice.equalsIgnoreCase( "E"))){
                         choice = scanner.nextLine();
-                        if(choice .equals("E")){
+                        if(choice.equalsIgnoreCase( "E")){
                             hasEscaped = true;
                         }
-                        else if(!(choice .equals("F"))){
+                        else if(!(choice.equalsIgnoreCase( "F"))){
                             System.out.println("Invalid entry please try again");
                         }
                     }

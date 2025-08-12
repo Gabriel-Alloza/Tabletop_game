@@ -17,9 +17,9 @@ public class Fireball {
 
         if(!player.hasFireball ){
             System.out.println("You equip yourself with a fireball!");
-            player.attack += 7;
+            player.setAttack(player.getAttack() + 7);
             player.hasFireball = true;
-            System.out.println("Your attack is now " + player.attack + "!");
+            System.out.println("Your attack is now " + player.getAttack() + "!");
 
         }
         else{
@@ -28,26 +28,26 @@ public class Fireball {
 
         if(player.hasLightning){
             System.out.println("You dont need your lightning anymore");
-            player.attack -= 2;
+            player.setAttack(player.getAttack() - 2);
             player.hasLightning = false;
         }
 
         if(player.hasInv){
             String choice="";
 
-            while(!(choice .equals("Y") || choice .equals("N"))){
+            while(!(choice .equalsIgnoreCase("Y") || choice .equalsIgnoreCase("N"))){
                 System.out.println("Do you want to throw away your invisibility to take a fire ball? (Y/N)");
                 choice = scanner.nextLine();
-                if(choice .equals("Y")){
-                    player.attack -= 5;
+                if(choice .equalsIgnoreCase("Y")){
+                    player.setAttack(player.getAttack() - 5);
                     player.hasInv= false;
-                    System.out.println("Your attack is now " + player.attack + "!");
+                    System.out.println("Your attack is now " + player.getAttack() + "!");
 
                 }
-                else if(choice .equals("N")){
-                    player.attack -= 7;
+                else if(choice .equalsIgnoreCase("N")){
+                    player.setAttack(player.getAttack() - 7);
                     player.hasFireball = false;
-                    System.out.println("Your attack is still " + player.attack + "!");
+                    System.out.println("Your attack is still " + player.getAttack() + "!");
                     System.out.println("and a +3 bonus against bad spirits!");
 
                 }

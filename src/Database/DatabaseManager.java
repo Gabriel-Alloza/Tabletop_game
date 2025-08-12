@@ -55,23 +55,23 @@ public class DatabaseManager {
 
         if (character instanceof Warrior) {
             if (((Warrior) character).hasSword) {
-                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'Sword')";
+                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'Sword')";
             }
             if (((Warrior) character).hasClub) {
-                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'Club')";
+                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'Club')";
             }
             if (!((Warrior) character).hasSword && !((Warrior) character).hasClub) {
-                query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'none')";
+                query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Warrior', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'none')";
             }
         } else if (character instanceof Magician) {
             if (((Magician) character).hasLightning) {
-                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'Lightning')";
+                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'Lightning')";
             }
             if (((Magician) character).hasFireball) {
-                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'Fireball')";
+                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'Fireball')";
             }
             if (!((Magician) character).hasLightning && ! ((Magician) character).hasFireball) {
-                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.charName + "', " + character.life + ", " + character.attack + ", 'none')";
+                 query = "INSERT INTO `Character`(Type, Name, LifePoints, Strength, OffensiveEquipment) VALUES('Magician', '" + character.getCharName() + "', " + character.getLife() + ", " + character.getAttack() + ", 'none')";
             }
         } else {
             System.out.println("Y'a un problème de classe dans la requette d'ajout du perso dans la base");

@@ -16,9 +16,9 @@ public class Invisibility {
 
         if(!player.hasInv){
             System.out.println("You equip yourself with invisibility!");
-            player.attack += 5;
+            player.setAttack(player.getAttack() + 5);
             player.hasInv = true;
-            System.out.println("Your attack is now " + player.attack + "!");
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             System.out.println("and a +3 bonus against bad spirits!");
         }
         else{
@@ -26,19 +26,19 @@ public class Invisibility {
         }
         if(player.hasFireball){
             String choice = "";
-            while(!(choice .equals("Y") || choice .equals("N"))){
+            while(!(choice .equalsIgnoreCase("Y") || choice .equalsIgnoreCase("N"))){
                 System.out.println("Do you want to throw away your fire ball to take invisibility? (Y/N)");
                 choice = scanner.nextLine();
                 if(choice .equals("Y")){
-                    player.attack -=7;
+                    player.setAttack(player.getAttack() -7);
                     player.hasFireball = false;
-                    System.out.println("Your attack is now " + player.attack + "!");
+                    System.out.println("Your attack is now " + player.getAttack() + "!");
                     System.out.println("and a +3 bonus against bad spirits!");
                 }
                 else if(choice .equals("N")){
-                    player.attack -=5;
+                    player.setAttack(player.getAttack() -5);
                     player.hasInv = false;
-                    System.out.println("Your attack is still " + player.attack + "!");
+                    System.out.println("Your attack is still " + player.getAttack() + "!");
                 }
                 else{
                     System.out.println("Wrong answer, please try again");
@@ -50,9 +50,9 @@ public class Invisibility {
 
         if(player.hasLightning){
             System.out.println("You dont need your lightning anymore");
-            player.attack -= 2;
+            player.setAttack(player.getAttack() - 2);
             player.hasLightning = false;
-            System.out.println("Your attack is now " + player.attack + "!");
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             System.out.println("and a +3 bonus against bad spirits!");
         }
     }

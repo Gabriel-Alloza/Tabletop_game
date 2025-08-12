@@ -13,8 +13,8 @@ public class Club {
     public static void equip(Warrior player){
         if(!player.hasClub && !(player.hasSword || player.hasBow)){
             System.out.println("You equip yourself with a club!");
-            player.attack += 3;
-            System.out.println("Your attack is now " + player.attack + "!");
+            player.setAttack(player.getAttack() + 3);
+            System.out.println("Your attack is now " + player.getAttack() + "!");
             player.hasClub = true;
         }
         else{

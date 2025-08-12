@@ -14,15 +14,15 @@ public class Menu {
         System.out.println("What is your name?");
         String name = scanner.nextLine();
 
-        System.out.println("What is your class?");
+        System.out.println("What is your class? Warrior? (W) or Magician? (M)");
         String type = scanner.nextLine();
 
-        if (type.equalsIgnoreCase("Warrior")) {
+        if (type.equalsIgnoreCase("W")) {
             Warrior PC = new Warrior(name);
             DatabaseManager db = new DatabaseManager();
             //db.createHero(PC);
             return PC;
-        } else if (type.equalsIgnoreCase("Magician")) {
+        } else if (type.equalsIgnoreCase("M")) {
             Magician PC = new Magician(name);
             DatabaseManager db = new DatabaseManager();
             //db.createHero(PC);
